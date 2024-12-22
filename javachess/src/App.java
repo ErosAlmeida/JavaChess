@@ -1,21 +1,29 @@
 import java.text.ParseException;
 import java.util.Locale;
-import java.util.Scanner;
-import entities.OrderItem;
-import entities.Product;
+import entities.Account;
+import entities.BusinessAccount;
+
+
 
 public class App {
     
         public static void main(String[] args) throws ParseException {
             Locale.setDefault(Locale.US);
-            Scanner sc = new Scanner(System.in);
+            
+            Account sc = new Account(1101, "Nice maluko", 0.0);
+            BusinessAccount bacc = new BusinessAccount(1001, "Herry",0.0 ,500.00);
 
-            Product p = new Product("tv", 1000.0);
-            OrderItem o1l = new OrderItem(1, 1000.0, p);
+            //UPCASTING
+            Account acc1 = bacc;
+            acc1.getBalance();
+            BusinessAccount acc2 = new BusinessAccount(12001, "Yummi",0.1,800.00);
 
-            System.out.println(o1l.getQuantity());
-            System.out.println(o1l.getProduct().getNameProduct());
-            System.out.println(o1l);
+            //DOWCASTING 
+
+            BusinessAccount acc4 = (BusinessAccount)acc2;
+            acc4.loan(100.0);
+
+            
  
     }
 
