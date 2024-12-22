@@ -4,26 +4,23 @@ import entities.Account;
 import entities.BusinessAccount;
 
 
-
 public class App {
     
         public static void main(String[] args) throws ParseException {
             Locale.setDefault(Locale.US);
             
-            Account sc = new Account(1101, "Nice maluko", 0.0);
-            BusinessAccount bacc = new BusinessAccount(1001, "Herry",0.0 ,500.00);
+           Account acc1 = new Account(101, "Nicee", 1000.0);
+           acc1.wihtdraw(200.0);
+           System.out.println(acc1.getBalance());
 
-            //UPCASTING
-            Account acc1 = bacc;
-            acc1.getBalance();
-            BusinessAccount acc2 = new BusinessAccount(12001, "Yummi",0.1,800.00);
+           Account aacc2 = new Account(1002, "YUMMI", 1000.0);
+           aacc2.wihtdraw(200.0);
+           System.out.println(aacc2.getBalance());
 
-            //DOWCASTING 
+           Account acc3 = new BusinessAccount(1003, "Yastt", 1000.0,500.0);
+           acc3.wihtdraw(200.0);
+           System.out.println(acc3.getBalance());
 
-            BusinessAccount acc4 = (BusinessAccount)acc2;
-            acc4.loan(100.0);
-
-            
  
     }
 
