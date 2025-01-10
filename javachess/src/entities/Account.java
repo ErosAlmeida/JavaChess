@@ -1,5 +1,7 @@
 package entities;
 
+import exceptions.BussinesExceptions;
+
 public class Account {
     private Integer number;
     private String holder;
@@ -52,6 +54,17 @@ public class Account {
         balance += amount;
     }
     public void withDraw(double amount){
+        validateWithDraw(amount);
         balance = balance - amount;
     }
+
+    private void validateWithDraw(double amount){
+        if (amount > getWithDrawLimit()) {
+            throw new BussinesExceptions("withdraw error : amount exceends withdraw");
+        }
+        if (amount > getBalance()) {
+            throw new BussinesExceptions("Withdraw Error: insufficient amount ");
+        }
+    }
+
 }

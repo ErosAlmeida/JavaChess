@@ -2,6 +2,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import entities.Account;
+import exceptions.BussinesExceptions;
 
 public class App {
     private static final Double Balance = null;
@@ -29,16 +30,14 @@ public class App {
             System.out.println();
             System.out.println("Profine withDrawal information: ");
             double amount = sc.nextDouble();
-            if (amount > acc.getWithDrawLimit()){
-                System.out.println("WithDrawal ERROR: amount exceeds withdrawal limit ");
-            }else if (amount > acc.getBalance()) {
-                System.out.println("WithDrawal error: insufficien amount ");
-
-            }else{
+         
+            try{
                 acc.withDraw(amount);
-                System.out.println("New WithDraw: " + acc.getBalance());
+                System.out.println("New Withdraw: " + acc.getBalance());
             }
-
+            catch(BussinesExceptions e){
+                System.out.println(e.getMessage());
+            }
             sc.close();    
 
     }
