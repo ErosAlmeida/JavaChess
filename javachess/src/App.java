@@ -1,9 +1,11 @@
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import entities.Circle;
+import entities.Retangle;
+import entities.Shape;
 
-import entities.Contract;
 
 public class App {
         public static void main(String[] args){
@@ -11,27 +13,22 @@ public class App {
             Locale.setDefault(Locale.US);
             Scanner sc = new Scanner(System.in);
 
-            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-            System.out.println("Entre os dados do contrato: ");
-            System.out.println("Numero: ");
-            int number = sc.nextInt();
-            System.out.println("Data (dd/MM/yyyy): ");
-            LocalDate date = LocalDate.parse(sc.next(), fmt);
-            System.out.println("Valor do contrato: ");
-            double totalValue = sc.nextDouble();
-
-            Contract obj = new Contract(number, date, totalValue);
-
-            System.out.println("Entre o numero de parcelas: ");
-            int n = sc.nextInt();
-
+            List<Shape> myShapes = new ArrayList<>();
+            myShapes.add(new Retangle(3.0, 2.0));
+            myShapes.add(new Circle(2.0));
+            System.out.println("Total area: ");
         
-
-
-
-
             sc.close();    
+
+    }
+
+    public static double totalArea(List<Shape> list){
+            double sum = 0.0;
+            for(Shape s: list){
+                sum += s.area();
+            }
+
+            return sum;
 
     }
     
