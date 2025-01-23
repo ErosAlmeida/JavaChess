@@ -1,4 +1,4 @@
-import java.beans.Statement;
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,8 +29,8 @@ public class App {
             e.printStackTrace();
         }
         finally {
-            rs.close();
-           DB.closeStatiment(st);
+            DB.closeResultSet(rs);
+           DB.closeStatiment((java.beans.Statement) st);
             DB.closeConnection();
         }
 

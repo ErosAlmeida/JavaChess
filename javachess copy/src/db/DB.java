@@ -1,9 +1,10 @@
 package db;
-import java.beans.Statement;
+import java.sql.Statement;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -18,7 +19,7 @@ public class DB {
             conn = DriverManager.getConnection(url, props);
             }
             catch(SQLException e){
-                throw new DbException(e.getMessage());
+                throw new DbException(e.getMessage(), e);
 
             }
         }
@@ -33,7 +34,7 @@ public class DB {
         }
 
             catch(SQLException e){
-                throw new DbException(e.getMessage());
+                throw new DbException(e.getMessage(), e);
 
 
             }
@@ -47,7 +48,7 @@ public class DB {
                 return props;
             }
             catch(IOException e){
-                throw new DbException(e.getMessage());
+                throw new DbException(e.getMessage(), null);
 
             }
     }
@@ -55,12 +56,28 @@ public class DB {
     public static void closeStatiment(Statement st){
         if (st != null) {
             try {
-              //  st.close();
+                st.close();
             } catch (SQLException e) {
-                throw new DbException(e.getMessage());
+                throw new DbException(e.getMessage(), e);
+          
             }
-           
                 
-            }
         }
     }
+    public static void closeResultSet(ResultSet rs){
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                throw new DbException(e.getMessage(), e);
+          
+            }
+                
+        }
+    }
+
+    public static void closeStatiment(java.beans.Statement st) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'closeStatiment'");
+    }
+}
