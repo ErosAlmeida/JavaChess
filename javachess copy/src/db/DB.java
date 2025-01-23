@@ -1,4 +1,5 @@
 package db;
+import java.beans.Statement;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -50,4 +51,16 @@ public class DB {
 
             }
     }
-}
+
+    public static void closeStatiment(Statement st){
+        if (st != null) {
+            try {
+              //  st.close();
+            } catch (SQLException e) {
+                throw new DbException(e.getMessage());
+            }
+           
+                
+            }
+        }
+    }
