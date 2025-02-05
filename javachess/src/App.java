@@ -1,15 +1,15 @@
-import java.sql.Connection;
+//import java.sql.Connection;
 import java.util.Locale;
 
-import db.DB;
-
+import modelEntities.Departament;
 
 public class App {
         public static void main(String[] args){
             Locale.setDefault(Locale.US);
 
-            Connection conn = DB.getConnection();
-            DB.closeConnection();
+           Departament obj = new Departament(1, "Nice");
+           System.out.println(obj);
+            
             
 
     }
