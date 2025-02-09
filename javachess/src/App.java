@@ -15,12 +15,10 @@ public class App {
            System.out.println(obj);
 
            SellerDao sellerDao = DaoFactory.creatSellerDao();
+           System.out.println(sellerDao);
 
            Seller seller = new Seller(2, "Valhalla", "valhalla@nice.com", new Date(), 3000.0, obj );
            System.out.println(seller);
-            
-            
-
     }
     
 }
