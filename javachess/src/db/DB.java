@@ -3,8 +3,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
+
+import javax.naming.spi.DirStateFactory.Result;
 
 public class DB {
 
@@ -49,5 +52,15 @@ public class DB {
                 throw new DbException(e.getMessage());
 
             }
+    }
+
+    public static void closeStatement(PreparedStatement st) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'closeStatement'");
+    }
+
+    public static void closeResultSet(Result rs) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'closeResultSet'");
     }
 }
