@@ -55,28 +55,39 @@ public class SellerDaoJDBC implements SellerDao{
             st.setInt(1, id);
             rs = (Result) st.executeQuery();
             if(((ResultSet) rs).next()){
-                Departament dep = new Departament();
-                dep.setId(((ResultSet) rs).getInt("Department"));
-                dep.setName(((ResultSet) rs).getString("DeepName"));
-                Seller obj = new Seller();
-                obj.setId(((ResultSet) rs).getInt("Id"));
-                obj.setName(((ResultSet) rs).getString("Name"));
-                obj.setEmail(((ResultSet) rs).getString("Email"));
-                obj.setBaseSalary(((ResultSet) rs).getDouble("BaseSalary"));
-                obj.setBirthDate(((ResultSet) rs).getDate("BirthDate"));
-                obj.setDepartament(dep);
-                return obj;
-
+                Departament dep = instantiateDep(rs);
+                Seller obj = instantiateSeller(rs, dep);
+                      return obj;
+                                                
+                    }
+                      return null;
+                          }
+                         catch(SQLException e){
+                           throw new DbException(e.getMessage());
+                    }finally{
+                    DB.closeConnection();
             }
-            return null;
-          }
-          catch(SQLException e){
-            throw new DbException(e.getMessage());
-          }finally{
-            DB.closeConnection();
-          }
     }
-
+                                                
+    private Seller instantiateSeller(Result rs, Departament dep) throws SQLException {
+        Seller obj = new Seller();
+              obj.setId(((ResultSet) rs).getInt("Id"));
+              obj.setName(((ResultSet) rs).getString("Name"));
+               obj.setEmail(((ResultSet) rs).getString("Email"));
+               obj.setBaseSalary(((ResultSet) rs).getDouble("BaseSalary"));
+                  obj.setBirthDate(((ResultSet) rs).getDate("BirthDate"));
+                    obj.setDepartament(dep);
+                  return obj;
+                                    
+             }
+                                
+     private Departament instantiateDep(Result rs) throws SQLException {
+                        Departament dep = new Departament();
+                        dep.setId(((ResultSet) rs).getInt("Department"));
+                        dep.setName(((ResultSet) rs).getString("DeepName"));
+                        return dep;
+                    }
+                
     @Override
     public List<Seller> findAll() {
         // TODO Auto-generated method stub
