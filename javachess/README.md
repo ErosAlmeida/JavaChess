@@ -1,18 +1,26 @@
-## Getting Started
+**jAVA CHESS**
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Java chess é um sistema de jogo de xadrez 
 
-## Folder Structure
+**PRÉ-REQUISITOS** 
 
-The workspace contains two folders by default, where:
+Você deve possuir a versão 16 do jdk instalado.
+Você deve possuir uma máquina Linux ou Windows (Lembrando que o jogo foi feito todo em Windows).
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+**COMO EXECUTAR** 
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+certifique-se de cumprir as regras do jogo:
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+    - Movimento correto das peças de xadres.
+    - Xeque e xeque- mate
+    - Rock 
+    - Promoção de peça 
 
-## Dependency Management
+    * Passo a passo do nosso ambiente
+    - Click no arquivo App.java que o jogo vai iniciar.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+    ## Contribuidores
+
+As seguintes pessoas contribuiram para este projeto:
+
+* Eros De Almeida Vilela (https://github.com/ErosAlmeida/JavaChess)
