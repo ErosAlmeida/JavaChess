@@ -14,16 +14,20 @@ public class App {
             Locale.setDefault(Locale.US);
 
            ChessMatch chessMatch = new ChessMatch();
-           UI.printBoard(chessMatch.getPiace()); 
+           UI.printBoard(chessMatch.getPieces()); 
 
            while (true) {
                 try{
                 UI.clearScreen();
-                UI.printBoard(chessMatch.getPiace());
+                UI.printBoard(chessMatch.getPieces());
                 System.out.println();
                 System.out.println("Source: ");
                 ChessPosition source = UI.readChessPosition(sc);  
                 
+                boolean[][] possibleMoves = chessMatch.possibleMoves(source);
+                UI.clearScreen();
+                UI.printBoard(chessMatch.getPieces(),possibleMoves);
+
                 System.out.println();
                 System.out.println("Target: ");
                 ChessPosition target = UI.readChessPosition(sc);
