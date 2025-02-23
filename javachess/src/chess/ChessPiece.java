@@ -1,27 +1,28 @@
 package chess;
+
 import boardgame.Board;
 import boardgame.Piece;
 import boardgame.Position;
 
-public abstract class ChessPiece extends Piece{
-
-    @SuppressWarnings("unused")
-    private static String ChessPiece;
-        private Color color;
-        
-            public Color getColor() {
-            return color;
-        }
+public abstract class ChessPiece extends Piece {
     
-            public ChessPiece(Board board, Color color) {
-                super(board);
-                this.color = color;
-        }
+    private Color color;
     
-        protected boolean isThereOpponentPiece(Position position){
-         ChessPiece p = (ChessPiece) getBoard().piece(position);
-        return p != null && p.getColor() != color;
-
+    public ChessPiece(Board board, Color color) {
+        super(board);
+        this.color = color;
     }
-    
+
+    public Color getColor() {
+        return color;
+    }
+
+    public ChessPosition getChessPosition() {
+        return ChessPosition.fromPosition(position);
+    }
+
+    protected boolean isThereOpponentPiece(Position position) {
+        Piece p = getBoard().piece(position);
+        return p != null && p instanceof ChessPiece && ((ChessPiece) p).getColor() != color;
+    }
 }
