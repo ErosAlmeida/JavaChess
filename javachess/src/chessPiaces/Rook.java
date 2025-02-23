@@ -1,7 +1,6 @@
 package chessPiaces;
 
 import boardgame.Board;
-import boardgame.Piece;
 import boardgame.Position;
 import chess.ChessPiece;
 import chess.Color;
@@ -66,9 +65,4 @@ public class Rook extends ChessPiece{
 		return mat;
 	}
 
-	@Override
-	public void remove(Piece capturedPiece) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'remove'");
-	}
 }

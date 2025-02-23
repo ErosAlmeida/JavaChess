@@ -68,8 +68,11 @@ public class ChessMatch {
         check = testCheck(opponent(currentPlayer));
 
         nextTurn();
+
+
         return (ChessPiece) capturedPiece;
     }
+
 
     private Piece makeMove(Position source, Position target) {
         Piece p = board.removePiece(source);
@@ -117,17 +120,15 @@ public class ChessMatch {
         return (color == Color.WHITE) ? Color.BLACK : Color.WHITE;
     }
 
-    private ChessPiece king(Color color) {
-        List<Piece> list = piecesOnTheBoard.stream()
-                .filter(x -> ((ChessPiece) x).getColor() == color)
-                .collect(Collectors.toList());
-        for (Piece p : list) {
-            if (p instanceof King) {
-                return (ChessPiece) p;
-            }
-        }
-        throw new IllegalStateException("There is no " + color + " King on the board");
-    }
+	private ChessPiece king(Color color) {
+		List<Piece> list = piecesOnTheBoard.stream().filter(x -> ((ChessPiece)x).getColor() == color).collect(Collectors.toList());
+		for (Piece p : list) {
+			if (p instanceof King) {
+				return (ChessPiece)p;
+			}
+		}
+		throw new IllegalStateException("There is no " + color + " king on the board");
+	}
 
     private boolean testCheck(Color color) {
         Position kingPosition = king(color).getChessPosition().toPosition();
@@ -144,10 +145,10 @@ public class ChessMatch {
         return false;
     }
 
-    public void placeNewPiece(char column, int row, ChessPiece piece) {
-        board.placePiece(piece, new ChessPosition(column, row).toPosition());
-        piecesOnTheBoard.add(piece);
-    }
+    private void placeNewPiece(char column, int row, ChessPiece piece) {
+		board.placePiece(piece, new ChessPosition(column, row).toPosition());
+		piecesOnTheBoard.add(piece);
+	}
 
     private void initialSetup() {
         placeNewPiece('c', 1, new Rook(board, Color.WHITE));
