@@ -21,7 +21,7 @@ public class App {
         UI.printBoard(chessMatch.getPieces());
         List<ChessPiece> captured = new ArrayList<>();
 
-        while (true) {
+        while (!chessMatch.getCheckMath()) {
             try {
                 UI.clearScreen();
                 UI.printMatch(chessMatch, captured);
@@ -52,5 +52,7 @@ public class App {
                 sc.nextLine();
             }
         }
+        UI.clearScreen();
+        UI.printMatch(chessMatch, captured);
     }
 }

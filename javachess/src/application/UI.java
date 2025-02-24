@@ -13,7 +13,6 @@ import chess.Color;
 
 public class UI {
 
-	// https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
 
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_BLACK = "\u001B[30m";
@@ -58,7 +57,7 @@ public class UI {
 		printCapturedPieces(captured);
 		System.out.println();
 		System.out.println("Turn : " + chessMatch.getTurn());
-		if (!chessMatch.getCheck()) {
+		if (!chessMatch.getCheckMath()) {
 			System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
 			if (chessMatch.getCheck()) {
 				System.out.println("CHECK!");
